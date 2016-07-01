@@ -38,7 +38,7 @@ pushd /opt/rpc-openstack
   git checkout "${RPC_BRANCH:-master}"
 
   # Copy the etc files into place
-  cp -r /opt/rpc-openstack/openstack-ansible/etc/openstack_deploy /etc/openstack_deploy/
+  cp -r /opt/rpc-openstack/openstack-ansible/etc/openstack_deploy /etc
   
   # Merge rpc user_variables
   /opt/rpc-openstack/scripts/update-yaml.py \

@@ -47,8 +47,8 @@ SETUP_VIRSH_NET=${SETUP_VIRSH_NET:-true}
 DEPLOY_VMS=${DEPLOY_VMS:-true}
 [[ "${DEPLOY_VMS}" = true ]] && source deploy-vms.sh
 
-if [ "${DEPLOY_OSA}" = true ]; then
+if [ "${DEPLOY_OSA}" = "yes" ]; then
     source deploy-osa.sh
-elif [ "${DEPLOY_RPC}" = true ]; then
+elif [ "${DEPLOY_RPC}" = "yes" ]; then
     source deploy-rpc.sh
 fi
