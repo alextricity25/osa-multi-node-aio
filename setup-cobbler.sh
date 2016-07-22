@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -eux
 # Copyright [2016] [Kevin Carter]
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +14,16 @@ set -eu
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Load variables
+SSHKEY=${SSHKEY:-`cat ~/.ssh/id_rsa.pub`}
+
 # Load all functions
 source functions.rc
 
 # Install cobbler
 wget -qO - http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/xUbuntu_14.04/Release.key | apt-key add -
 add-apt-repository "deb http://download.opensuse.org/repositories/home:/libertas-ict:/cobbler26/xUbuntu_14.04/ ./"
-apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install cobbler dhcp3-server debmirror isc-dhcp-server ipcalc tftpd tftp fence-agents iptables-persistent
+apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install cobbler dhcp3-server debmirror isc-dhcp-server ipcalc tftpd tftp fence-agents iptables-persistent --allow-unauthenticated
 
 # Basic cobbler setup
 sed -i 's/^manage_dhcp\:.*/manage_dhcp\: 1/g' /etc/cobbler/settings

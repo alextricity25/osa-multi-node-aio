@@ -32,7 +32,7 @@ if [ ! -f "/root/.ssh/id_rsa" ];then
 fi
 
 # This gets the root users SSH-public-key
-SSHKEY=$(cat /root/.ssh/id_rsa.pub)
+export SSHKEY=$(cat /root/.ssh/id_rsa.pub)
 if ! grep -q "${SSHKEY}" /root/.ssh/authorized_keys; then
   cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 fi
