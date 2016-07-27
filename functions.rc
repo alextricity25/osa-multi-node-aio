@@ -197,7 +197,7 @@ done
 }
 
 function install_bits () {
-successerator openstack-ansible ${ANSIBLE_PARAMETERS} $@
+successerator openstack-ansible $@
 }
 
 function successerator () {
@@ -215,7 +215,7 @@ for ((RETRY=0; $? != 0 && RETRY < MAX_RETRIES; RETRY++)); do
 done
 
 # If max retries were hit, fail.
-if [ #? -ne 0 && [ ${RETRY} -eq ${MAX_RETRIES} ]; then
+if [ $? -ne 0 ] && [ ${RETRY} -eq ${MAX_RETRIES} ]; then
   echo -e "\n Hit maximum number of retries, giving up..\n"
   exit
 fi
