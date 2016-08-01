@@ -46,7 +46,7 @@ pushd /opt/rpc-openstack
   /opt/rpc-openstack/rpcd/etc/openstack_deploy/user_variables.yml
 
   # Copy the RPCO configuration files
-  cp /opt/rpc-openstack/rpcd/etc/openstack_deploy/user_extras_*.yml \
+  cp /opt/rpc-openstack/rpcd/etc/openstack_deploy/user_*.yml \
   /etc/openstack_deploy/
 
   cp /opt/rpc-openstack/rpcd/etc/openstack_deploy/env.d/* \
