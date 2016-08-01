@@ -37,6 +37,8 @@ pushd /opt/rpc-openstack
   # Checkout the OpenStack-Ansible branch
   git checkout "${RPC_BRANCH:-master}"
 
+  git submodule update
+
   # Copy the etc files into place
   cp -r /opt/rpc-openstack/openstack-ansible/etc/openstack_deploy /etc
   
@@ -112,7 +114,6 @@ export DEPLOY_TEMPEST="yes"
 export ANSIBLE_FORCE_COLOR=true
 
 pushd /opt/rpc-openstack
-
   source ./scripts/deploy.sh
 
 popd
