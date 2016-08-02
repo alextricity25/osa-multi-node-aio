@@ -36,7 +36,6 @@ pushd /opt/rpc-openstack
 
   # Checkout the OpenStack-Ansible branch
   git checkout "${RPC_BRANCH:-master}"
-
   git submodule update
 
   # Copy the etc files into place
@@ -92,7 +91,7 @@ write_osa_swift_storage_confd swift_hosts swift
 ### =========== END WRITE OF conf.d FILES =========== ###
 
 
-pushd /opt/openstack-ansible/
+pushd /opt/rpc-openstack/openstack-ansible/
 
   # This is happening so the VMs running the infra use less storage
   osa_user_var_add lxc_container_backing_store 'lxc_container_backing_store: dir'
@@ -112,6 +111,7 @@ export DEPLOY_HAPROXY="yes"
 export DEPLOY_ELK="yes"
 export DEPLOY_TEMPEST="yes"
 export ANSIBLE_FORCE_COLOR=true
+cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 
 pushd /opt/rpc-openstack
   source ./scripts/deploy.sh
